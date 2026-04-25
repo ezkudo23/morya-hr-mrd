@@ -1,6 +1,6 @@
 # Section 3: โครงสร้างองค์กร (Organization Structure)
 
-*อัปเดต: 24 เม.ย. 2569*
+*อัปเดต: 25 เม.ย. 2569*
 
 ---
 
@@ -10,27 +10,27 @@
                    👑 เฮีย (Owner)
                         │
        ┌────────────────┼────────────────┐
-       ↓                ↓                ↓
+       ↓                ↓
   ไนซ์ (Delegate-HR)   จิว (Delegate-Strategic)
        │
        ↓
   การ์ตูน (HR Admin)
-  นา (Finance Lead)
+  นา (Finance)
   บอส (IT Support)
        │
        ↓
-5 Supervisors ─┬─ ติ๋ง (Warehouse, 6 คน)
-               ├─ เมล์ + เดือน (Co-Sup HQ-WS, 8 คน)
-               ├─ ค๊อป (สาขาปลีก HQ + PC, 6 คน)
-               └─ จอย (สาขา 04, 3 คน)
+5 Supervisors ─┬─ ติ๋ง (Warehouse, 5 คน)
+               ├─ เมล์ + เดือน (Co-Sup HQ-WS, 6 คน)
+               ├─ ค๊อป (ขายปลีก HQ + PC, 5 คน)
+               └─ จอย (สาขา 04, 2 คน)
        │
        ↓
- 19 Staff (ปฏิบัติการ)
+ 20 Staff (ปฏิบัติการ)
 ```
 
-**รวม headcount: 33 คน** (30 คน run payroll + 3 PC reference)
+**รวม headcount: 32 คน** (29 คน run payroll + 3 PC reference)
 
-> 📌 Single Source of Truth: Master Data section (employee headcount + roles)
+> 📌 Single Source of Truth: Master Data (Official Headcount & Roles)
 
 ---
 
@@ -44,17 +44,17 @@
 |--------|-----------|
 | สถานที่ | สำนักงานใหญ่ (Server 00) |
 | พนักงาน | 8 คน |
-| Supervisors | เมล์ (MY05) + เดือน (MY23) — Co-Supervisor Model |
+| Supervisors | เมล์ (MY05) + เดือน (MY23) — Co-Supervisor |
 | ลูกทีม | MY06, MY08, MY10, MY17, MY19, MY22 |
 | GP target | 4–10% |
-| ลูกค้า | B2B (ผ่าน morya.co.th — ต้อง approve user) |
+| ลูกค้า | B2B (morya.co.th — ต้อง approve user) |
 
 #### CC-01 — ขายปลีก HQ
 
 | ข้อมูล | รายละเอียด |
 |--------|-----------|
 | สถานที่ | สำนักงานใหญ่ (Server 01) |
-| พนักงาน | 6 คน (3 Staff + 3 PC) |
+| พนักงาน | 5 คน (2 Staff + 3 PC) |
 | Supervisor | ค๊อป (MY14) — เภสัชกร + Supervisor |
 | ลูกทีม | MY15, MY24 + PC01-03 |
 | GP target | 30–40% |
@@ -69,7 +69,6 @@
 | Supervisor | จอย (MY11) — เภสัชกร + Supervisor |
 | ลูกทีม | MY12, MY26 |
 | GP target | 30–40% |
-| ลูกค้า | Walk-in retail |
 
 ---
 
@@ -77,24 +76,22 @@
 
 | CC | พนักงาน | รายละเอียด |
 |----|---------|-----------|
-| CC-SUPPORT-HR | 1 (การ์ตูน MY07) | การ์ตูนช่วยงาน FIN บางส่วน — คง primary CC ที่ HR |
-| CC-SUPPORT-FIN | 3 | Finance Lead: นา (MY16); Assistants: ก้อย (MY02), แอ๊ด (MY21) |
-| CC-SUPPORT-IT | 1 (บอส MY25) | — |
-| CC-SUPPORT-WH | 6 | Supervisor: ติ๋ง (MY04); ลูกทีม: MY01, MY09, MY13, MY18, MY20 |
-| CC-SUPPORT-FAC | 1 (จำเนียร) | แม่บ้าน / ดูแลสถานที่ |
+| CC-SUPPORT-HR | 1 (การ์ตูน MY07) | HR Admin primary |
+| CC-SUPPORT-FIN | 3 | นา (MY16), ก้อย (MY02), แอ๊ด (MY21) |
+| CC-SUPPORT-IT | 1 (บอส MY25) | IT Support |
+| CC-SUPPORT-WH | 5 | ติ๋ง (MY04) Sup + MY01, MY09, MY13, MY18, MY20 |
+| CC-SUPPORT-FAC | **0 คน** (CC ยังคงอยู่) | ⚠️ จำเนียรออกแล้ว (จ้างนอกระบบ) — CC เผื่ออนาคต |
 
 ---
 
-## 3.3 การกระจายเภสัชกร (Pharmacist Coverage)
-
-กฎหมาย: ต้องมีเภสัชกรประจำร้านขายยา
+## 3.3 การกระจายเภสัชกร
 
 | ร้าน | เภสัชกร |
 |------|---------|
-| สำนักงานใหญ่ (Server 00 + 01) | ค๊อป (MY14) — ครอบทั้ง 2 server |
-| สาขา 04 (Server 04) | จอย (MY11) |
+| HQ (Server 00 + 01) | ค๊อป (MY14) |
+| สาขา 04 | จอย (MY11) |
 
-⚠️ **Business Continuity Risk:** มีเภสัชกรแค่ 2 คน — ไม่มี backup — ถ้าลา/ป่วย/ลาออก ร้านต้องปิด — ต้องมี contingency plan (pending)
+⚠️ **Risk:** มีเภสัชกรแค่ 2 คน ไม่มี backup — ถ้าลา/ป่วย/ลาออก ร้านต้องปิด — ต้องมี contingency plan (pending)
 
 ---
 
@@ -108,28 +105,22 @@ PC ไม่ใช่พนักงานของบริษัท — เป
 | PC02 | ต่าย | Blackmores | CC-01 |
 | PC03 | พลอย | Wellgate | CC-01 |
 
-**ความสัมพันธ์:** ทำงานในร้าน แต่เงินเดือนจาก sponsor | Commission จาก Bluenote → MYHR (reference only) | อยู่ภายใต้ค๊อป | ❌ ไม่มี LINE LIFF | ❌ ไม่ต้อง check-in/out
+- ทำงานในร้าน เงินเดือนจาก sponsor
+- ✅ มี check-in/out (ติดตาม sponsor)
+- ⚡ LIFF access จำกัด (self-attendance only)
+- อยู่ใต้ค๊อป (Supervisor)
 
 ---
 
 ## 3.5 Rotation Shift Model
 
 ```
-📅 Rotation: 9 ชม. × 6 วัน/สัปดาห์
-   ├── ไม่มีวันหยุดประจำสัปดาห์คงที่
-   ├── หมุนเวียนตาม schedule
-   └── Supervisor กำหนดตาราง
-
-ชั่วโมงทำงาน:
-   ├── 9 ชม./วัน รวมพัก 1 ชม.
-   ├── Effective work: 8 ชม./วัน
-   └── 48 ชม./สัปดาห์ (ตามกฎหมาย)
+9 ชม./วัน รวมพัก 1 ชม. (ทำงานจริง 8 ชม.)
+หมุนเวียน — ไม่มีวันหยุดประจำสัปดาห์คงที่
+48 ชม./สัปดาห์ (ตามกฎหมาย)
 ```
 
-### ข้อยกเว้น (Exempt from Time Attendance)
-
-- 👑 Owner (เฮีย) — ระดับ Director
-- 👑 Owner Delegates (ไนซ์, จิว) — ระดับ Director
+**Exempt:** เฮีย, ไนซ์, จิว (Director/Executive — ไม่ต้อง check-in)
 
 ---
 
@@ -141,7 +132,7 @@ PC ไม่ใช่พนักงานของบริษัท — เป
 |---------|-------|
 | ≤ 3 วัน | Supervisor |
 | 4–7 วัน | Supervisor → HR Admin |
-| 8+ วัน | Supervisor → HR Admin → Owner/Delegate |
+| 8+ วัน | Supervisor → HR Admin → Owner |
 
 ### Supervisor → Team Mapping
 
@@ -156,29 +147,22 @@ PC ไม่ใช่พนักงานของบริษัท — เป
 
 ## 3.7 Special Roles
 
-### เภสัชกร (Pharmacist) — Dual Role
+### เภสัชกร — Dual Role
 
-จอย (MY11) + ค๊อป (MY14) ทำ 2 หน้าที่พร้อมกัน:
-1. **Supervisor** — บริหารทีมในสาขา
-2. **เภสัชกร** — ให้คำปรึกษา + ขาย + legal compliance
+จอย + ค๊อป ทำ 2 หน้าที่: Supervisor + เภสัชกร
 
-**OT Rate พิเศษ:** 150 บาท/ชม. (fix — ไม่ใช่ 1.5x)  
-⚠️ **Flag D17:** อาจต่ำกว่า 1.5x legal minimum — รอทนายตรวจ | Risk Accepted โดย Owner
+**OT Rate:** 150 บาท/ชม. (fix) — 🔒 D17 Owner accepts legal risk (ปรึกษาทนายแล้ว)
 
-### Co-Supervisor Model (เมล์ + เดือน)
+### Co-Supervisor (เมล์ + เดือน)
 
-- CC-HQ-WS มีพนักงาน 8 คน → ใหญ่เกินกว่า Supervisor คนเดียว
-- สิทธิ์เท่าเทียม (Equal authority)
-- ใครว่างก่อน approve ก่อน (first come first served)
-- Audit log ระบุชื่อคน approve
+8 คนใน CC-HQ-WS ใหญ่เกินกว่า Supervisor คนเดียว → สิทธิ์เท่าเทียม, ใครว่างก่อน approve ก่อน
 
 ---
 
 ## 3.8 Special Status: สังวาลย์
 
-| ข้อมูล | รายละเอียด |
-|--------|-----------|
 | สถานะ | active_no_payroll |
+|-------|-----------------|
 | เงินเดือน | ไม่มี |
 | ปกส. | บริษัทจ่าย contribution 8,000 บาท/ปี |
 | สิทธิ์เข้าถึง | ไม่มี |
@@ -191,27 +175,27 @@ PC ไม่ใช่พนักงานของบริษัท — เป
 
 | Cost Center | จำนวน | หมายเหตุ |
 |------------|-------|---------|
-| CC-HQ-WS | 8 | Main — ขายส่ง (6 Staff + 2 Co-Sup) |
-| CC-01 | 6 | Main — ขายปลีก HQ (1 Sup + 2 Staff + 3 PC) |
-| CC-04 | 3 | Main — สาขา 04 (1 Sup + 2 Staff) |
-| CC-SUPPORT-HR | 1 | Support (การ์ตูน) |
-| CC-SUPPORT-FIN | 3 | Support (นา + ก้อย + แอ๊ด) |
-| CC-SUPPORT-IT | 1 | Support (บอส) |
-| CC-SUPPORT-WH | 6 | Support (ติ๋ง Sup + 5 Staff) |
-| CC-SUPPORT-FAC | 1 | Support (จำเนียร) |
-| Director (exempt) | 3 | Owner + 2 Delegates |
+| CC-HQ-WS | 8 | 2 Co-Sup + 6 Staff |
+| CC-01 | 5 | 1 Sup + 2 Staff + 3 PC |
+| CC-04 | 3 | 1 Sup + 2 Staff |
+| CC-SUPPORT-HR | 1 | การ์ตูน |
+| CC-SUPPORT-FIN | 3 | นา + ก้อย + แอ๊ด |
+| CC-SUPPORT-IT | 1 | บอส |
+| CC-SUPPORT-WH | 5 | ติ๋ง Sup + 5 Staff → รวม 6 แต่ 1 = ติ๋ง Sup |
+| CC-SUPPORT-FAC | 0 | จำเนียรออกแล้ว (จ้างนอกระบบ) — CC ยังคงอยู่ |
+| Director (exempt) | 3 | เฮีย + ไนซ์ + จิว |
 | Special status | 1 | สังวาลย์ |
-| **รวม** | **33** | **(ไม่รวม PC 3 คน = 30 payroll)** |
+| **รวม** | **29** | **(ไม่รวม PC 3 คน = 29 payroll, 32 total in system)** |
 
 ---
 
 ## 3.10 Open Action Items
 
 - [ ] Verify supervisor-team mapping ใน M1
-- [ ] Business continuity plan สำหรับเภสัชกร (2 คน no backup)
-- [ ] ขออีเมล/เบอร์เภสัชกร + license number + expiry
-- [ ] Legal consult สถานะสังวาลย์ active_no_payroll
-- [ ] Verify hire dates: MY23 เดือน, สังวาลย์, จำเนียร, เฮีย, ไนซ์
+- [ ] Business continuity plan เภสัชกร (2 คน no backup)
+- [ ] License number + expiry ของเภสัชกรทั้ง 2 คน
+- [ ] Legal consult สังวาลย์ active_no_payroll
+- [ ] Verify hire dates: MY23, สังวาลย์, เฮีย, ไนซ์
 
 ---
 
@@ -225,4 +209,4 @@ PC ไม่ใช่พนักงานของบริษัท — เป
 
 ---
 
-*Last updated: 24 เม.ย. 2569 | Status: ✅ Locked*
+*Last updated: 25 เม.ย. 2569 | จำเนียรออก (จ้างนอกระบบ), headcount 32 total / 29 payroll*
