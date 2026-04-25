@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Sensitive (DO NOT COMMIT)
+**/secrets.md
+**/credentials.json
+**/*.env
+**/payroll-actual-*.csv
+**/employee-data-prod.*
+
+# Local working files
+.draft/
+.scratch/
+
+# Archive (should be tagged in git history instead)
+archive/*-old.*
