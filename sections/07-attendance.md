@@ -67,9 +67,9 @@ Distance = Haversine(user_location, branch_location)
 
 ### GPS Coordinates (Pending — เก็บที่ M1)
 
-- HQ-00 (ขายส่ง) — TBD
-- HQ-01 (ขายปลีก) — TBD
-- CC-04 — TBD
+- HQ-00 (ขายส่ง) — 14.886239, 103.492307
+- HQ-01 (ขายปลีก) — 14.8864189, 103.4919395
+- CC-04 — 14.8732376, 103.5060382
 
 ---
 
