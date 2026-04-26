@@ -2,8 +2,8 @@
 
 *บริษัท หมอยาสุรินทร์ จำกัด | Reference file*
 
-> **Status:** 🔒 Updated — 25 เม.ย. 2569
-> **Source of Truth:** Official Headcount & Roles (Master Data page)
+> **Status:** ✅ Updated — 26 เม.ย. 2569
+> **Source of Truth:** Official Headcount & Roles
 > **Usage:** Reference สำหรับ Dev migration M1
 
 ---
@@ -22,23 +22,25 @@
 
 ## Group A: Directors / Delegates (3 คน) — Payroll ✅ | Attendance ❌ | SSO ❌/✅
 
-| Code | ชื่อเล่น | ชื่อ-นามสกุล | Role | เงินเดือน | SSO | หมายเหตุ |
-|------|---------|------------|------|---------|-----|---------|
-| — | เฮีย | อมร | Owner (Director) | 20,000 | ❌ | ⚠️ ไม่อยู่ใน Humansoft — add ตอน M1 |
-| — | ไนซ์ | (ภรรยาเฮีย) | Owner Delegate (Director) | 20,000 | ❌ | ⚠️ ไม่อยู่ใน Humansoft — add ตอน M1 |
-| CEO02 | จิว | ศศิ เกียรติคุณรัตน์ | Owner Delegate (Executive) | 30,000 | ✅ 750 | ⚠️ Humansoft salary=0 → set 30,000 ตอน M1 |
+| Code | ชื่อเล่น | ชื่อ-นามสกุล | Role | เงินเดือน | SSO | เริ่มงาน | หมายเหตุ |
+|------|---------|------------|------|---------|-----|---------|---------|
+| — | เฮีย | อมร | Owner (Director) | 20,000 | ❌ | 21/10/2557 | ⚠️ ไม่อยู่ใน Humansoft — add ตอน M1 |
+| — | ไนซ์ | (ภรรยาเฮีย) | Owner Delegate (Director) | 20,000 | ❌ | 21/10/2557 | ⚠️ ไม่อยู่ใน Humansoft — add ตอน M1 |
+| CEO02 | จิว | ศศิ เกียรติคุณรัตน์ | Owner Delegate (Executive) | 30,000 | ✅ 750 | — | ⚠️ Humansoft salary=0 → set 30,000 ตอน M1 |
+
+> วันเริ่มงานเฮีย + ไนซ์ = วันก่อตั้งบริษัท (21 ต.ค. 2557)
 
 ---
 
 ## Group B: Supervisors (5 คน) — Payroll ✅ | Attendance ✅ | SSO ✅
 
-| Code | ชื่อเล่น | ชื่อ-นามสกุล | Role | Cost Center | เงินเดือน |
-|------|---------|------------|------|------------|---------|
-| MY04 | ติ๋ง | ศิริรัตน์ ผิวขาว | Supervisor WH | CC-SUPPORT-WH | 12,444 |
-| MY05 | เมล์ | ภัทราภรณ์ ปัสสาวะกัง | Co-Supervisor HQ-WS | CC-HQ-WS | 10,820 |
-| MY11 | จอย | ศิราพร สิทธิรัมย์ | Supervisor + เภสัชกร | CC-04 | 34,000 |
-| MY14 | ค๊อป | กษิดิศ สงึมรัมย์ | Supervisor + เภสัชกร | CC-01 | 31,000 |
-| MY23 | เดือน | ดวงหทัย ปวนใต้ | Co-Supervisor HQ-WS | CC-HQ-WS | 16,200 |
+| Code | ชื่อเล่น | ชื่อ-นามสกุล | Role | Cost Center | เงินเดือน | เริ่มงาน |
+|------|---------|------------|------|------------|---------|---------|
+| MY04 | ติ๋ง | ศิริรัตน์ ผิวขาว | Supervisor WH | CC-SUPPORT-WH | 12,444 | — |
+| MY05 | เมล์ | ภัทราภรณ์ ปัสสาวะกัง | Co-Supervisor HQ-WS | CC-HQ-WS | 10,820 | — |
+| MY11 | จอย | ศิราพร สิทธิรัมย์ | Supervisor + เภสัชกร | CC-04 | 34,000 | — |
+| MY14 | ค๊อป | กษิดิศ สงึมรัมย์ | Supervisor + เภสัชกร | CC-01 | 31,000 | — |
+| MY23 | เดือน | ดวงหทัย ปวนใต้ | Co-Supervisor HQ-WS | CC-HQ-WS | 16,200 | 21/10/2557 |
 
 ---
 
@@ -120,9 +122,9 @@
 
 ## Group E: Active No Payroll (1 คน)
 
-| Code | ชื่อเล่น | ชื่อ-นามสกุล | SSO |
-|------|---------|------------|-----|
-| — | สังวาลย์ | สังวาลย์ หาญเหี้ยม | ✅ บริษัทจ่าย contribution |
+| Code | ชื่อเล่น | ชื่อ-นามสกุล | SSO | เริ่มงาน |
+|------|---------|------------|-----|---------|
+| — | สังวาลย์ | สังวาลย์ หาญเหี้ยม | ✅ บริษัทจ่าย contribution | 01/01/2562 |
 
 > ⚠️ สถานะทางกฎหมาย: รอปรึกษาทนายแรงงาน ก่อน go-live
 
@@ -174,9 +176,10 @@
 
 ### Manual Add (ไม่อยู่ใน Humansoft)
 
-เตรียมข้อมูลต่อไปนี้สำหรับ add manual ตอน M1:
-- **เฮีย:** ชื่อเต็ม, เลข ปชช., วันเริ่มงาน, บัญชีธนาคาร, วันเกิด
-- **ไนซ์:** ชื่อเต็ม, เลข ปชช., วันเริ่มงาน, บัญชีธนาคาร, วันเกิด
+| คน | ข้อมูลที่ต้องเตรียม |
+|---|---|
+| เฮีย | ชื่อเต็ม, เลข ปชช., บัญชีธนาคาร, วันเกิด |
+| ไนซ์ | ชื่อเต็ม, เลข ปชช., บัญชีธนาคาร, วันเกิด |
 
 ### Role Corrections from Humansoft
 
@@ -191,29 +194,26 @@
 
 ### Pending Info (ต้องเก็บก่อน M1)
 
-- [ ] Verify hire dates: MY23 (เดือน), สังวาลย์, เฮีย, ไนซ์
 - [ ] เลข ปชช. + วันเกิด: เฮีย, ไนซ์
 - [ ] บัญชีธนาคาร: เฮีย, ไนซ์
 - [ ] License number + expiry: ค๊อป (MY14), จอย (MY11)
-- [ ] GPS coordinates: HQ-00, HQ-01, CC-04
 
 ---
 
 ## Change Log
 
-### 25 เม.ย. 2569
+### 26 เม.ย. 2569
+- ✅ Hire dates confirmed: เฮีย + ไนซ์ + เดือน = 21/10/2557 (วันก่อตั้งบริษัท)
+- ✅ Hire date สังวาลย์ = 01/01/2562
+- ✅ GPS coordinates confirmed (ดู master-data.md)
+- ✅ D17 Legal Reviewed — Owner confirms risk accepted
 
+### 25 เม.ย. 2569
 - ❌ จำเนียร เชิดกลิ่น ออกจากระบบ (จ้างนอกระบบ)
 - ✅ Total: 33 → 32 | Payroll: 30 → 29 | Attendance: 29 → 28
 - ✅ C-03 Locked: ลาป่วย ≥1 ครั้ง = ตัดเบี้ยขยัน (Option A)
 - ✅ PC LIFF clarified: limited access (attendance only)
 
-### 24 เม.ย. 2569
-
-- ✅ Initial lock — confirmed by เฮีย
-- ✅ Resolved 5 role discrepancies
-- ✅ Confirmed PC ต้อง track attendance
-
 ---
 
-*🔒 Reference file | อ้างอิง Master Data page สำหรับ source of truth*
+*Last updated: 26 เม.ย. 2569*
