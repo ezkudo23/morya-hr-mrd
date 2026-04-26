@@ -82,8 +82,7 @@
 - **Legal Risk**: ม.61 violation (จ่ายต่ำกว่า 1.5x ของหนึ่งชม.เงินเดือน)
 - **Estimated Worst Case**: ~14,000+ ค่าฟ้องย้อน 2 ปี
 - **Annual Saving vs. compliant**: ~6,375 บาท
-- **🚩 Pending Legal Review**: ทนายตรวจ + อาจปรับปรุงภายหลัง
-
+- **✅ Legal Reviewed 26 เม.ย. 2569**: Owner ยืนยัน risk accepted — Fix 150 บาท/ชม. คงเดิม
 ---
 
 ## 📊 Progress
