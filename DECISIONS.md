@@ -8,7 +8,7 @@
 
 | # | Date | Topic | Status | Sections |
 |---|------|-------|--------|----------|
-| D1 | 2026-04-21 | Headcount = 33 คน | 🔒 Locked | 1, 2, 3, 6, 7, 8, 12 |
+| D1 | 2026-04-21 | Headcount = 32 คน (in system) | 🔒 Locked | 1, 2, 3, 6, 7, 8, 12 |
 | D2 | 2026-04-21 | Go-Live: 1 ม.ค. 2570 | 🔒 Locked | 1, 12 |
 | D3 | 2026-04-21 | Tech Stack final | 🔒 Locked | 12 |
 | D4 | 2026-04-23 | Finance Lead → Finance | 🔒 Locked | 2, 8, 10 |
@@ -24,28 +24,30 @@
 | D14 | 2026-04-25 | Emergency Unlock: Both | 🔒 Locked | 4 |
 | D15 | 2026-04-25 | Retention Tier Model | 🔒 Locked | 4, 10, 11 |
 | D16 | 2026-04-25 | ลาป่วย ≥1 = ตัดเบี้ยขยัน | 🔒 Locked | 4, 6 |
-| D17 | 2026-04-25 | Pharmacist OT Fix 150 | ⚠️ Risk Accepted | 4, 6, 7 |
+| D17 | 2026-04-26 | Pharmacist OT Fix 150 | ✅ Legal Reviewed | 4, 6, 7 |
 | D18 | 2026-04-25 | CC-HQ-WS Rotation | 🔒 Locked | 7 |
 
 ---
 
-## D1: Headcount = 33 คน
+## D1: Headcount
 
-**Date**: 21 เม.ย. 2569
-**Source**: Reconciled from Humansoft data
+**Date**: 21 เม.ย. 2569 | **Updated**: 26 เม.ย. 2569
+**Source**: Reconciled from Humansoft data + จำเนียรออกจากระบบ 25 เม.ย. 2569
 
-### Breakdown
+### Breakdown (32 คน in system)
 - 3 Director/Delegate: เฮีย (20,000), ไนซ์ (20,000), จิว CEO02 (30,000)
 - 5 Supervisors: MY04, MY05, MY11, MY14, MY23
 - 20 Staff
-- 1 Facility: จำเนียร (~9,000)
-- 1 SSO-only: สังวาลย์ (8,000 SSO contribution)
+- 1 SSO-only: สังวาลย์
 - 3 PC: PC01 ชมพู่, PC02 ต่าย, PC03 พลอย
+- ❌ จำเนียร = จ้างนอกระบบ ไม่มี employee record ใน MYHR
 
-### Counting metrics
-- **Payroll run**: 30 คน (exclude สังวาลย์ + 3 PC)
-- **Attendance tracking**: 29 คน (20 Staff + 5 Sup + 1 Facility + 3 PC)
-- **LIFF Access**: 30 คน
+### Counting Metrics
+- **Total in system**: 32 คน
+- **Payroll run**: 29 คน (ไม่รวม สังวาลย์ + 3 PC)
+- **Attendance tracking**: 28 คน (5 Sup + 20 Staff + 3 PC — ไม่รวม 3 Director + สังวาลย์)
+- **LIFF Access**: 29 คน (ไม่รวม สังวาลย์ + PC limited)
+- **SSO contribution**: 27 คน (Payroll 29 - เฮีย - ไนซ์)
 
 ---
 
@@ -58,32 +60,70 @@
 
 ---
 
-## D6-D8: Payroll Timeline (Locked)
+## D3: Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 15 + TypeScript strict + Tailwind 4 + shadcn/ui |
+| Forms | React Hook Form + Zod |
+| Database | Supabase Pro (Postgres + RLS + Auth) |
+| Authentication | LINE Login (OAuth 2.0) |
+| Mobile UI | LINE LIFF |
+| Hosting | Cloudflare Pages |
+| Error tracking | Sentry |
+| PDF generation | Puppeteer |
+| Excel export | exceljs |
+| Font (Thai) | IBM Plex Sans Thai |
+| Testing | Vitest (unit) + Playwright (e2e) |
+| AI Assistant | Claude API Haiku |
+| Charts | Recharts |
+| Package manager | pnpm |
+
+---
+
+## D4: Finance (ไม่ใช่ Finance Lead)
+
+- นา (MY16) = Finance — คนเดียวที่ run payroll ได้
+- ไม่มีตำแหน่ง "Finance Lead" ในระบบ
+- Finance Assistants (ก้อย, แอ๊ด) = support เท่านั้น ไม่ run payroll
+
+---
+
+## D5: Timeline Milestones
+
+| Milestone | เป้าหมาย |
+|-----------|---------|
+| M0 MRD Approved | พ.ค. 2569 |
+| M1 Foundation | พ.ค.–ก.ค. 2569 |
+| M2 Core Features | ส.ค.–ก.ย. 2569 |
+| M3 Polish + QA | ต.ค. 2569 ⚠️ Compressed |
+| UAT | พ.ย. 2569 (3 สัปดาห์) |
+| Parallel Run | ธ.ค. 2569 |
+| Go/No-Go | 28 ธ.ค. 2569 |
+| **Go-Live** | **1 ม.ค. 2570** |
+
+---
+
+## D6-D8: Payroll Timeline
 
 ### Round 1: Salary Base
 - ตั้งโอน: วันที่ 28 - สิ้นเดือน
-- เงินเข้า: วันที่ 1 ของเดือนถัดไป (auto, scheduled transfer)
+- เงินเข้า: วันที่ 1 ของเดือนถัดไป (auto)
 - Owner approve grace: วันที่ 1-7
 
 ### Round 2: Variable
 - Commission + OT + เบี้ยขยัน + adjustments
 - ทำ: วันที่ 1-14
-- ยื่น สปส.1-10 + ตั้งโอน: 15
-- เงินเข้า: 16
+- ยื่น สปส.1-10 + ตั้งโอน: วันที่ 15
+- เงินเข้า: วันที่ 16
 
 ---
 
-## D9: Hybrid Salary Logic
-
-```
-IF พนักงานใหม่ (เดือนแรก) OR ลาออก (เดือนสุดท้าย):
-    USE Days Worked: salary = base × (worked_days / 30)
-
-ELSE (พนักงานเก่า):
-    USE Days Absent:
-    deduction = base × (absent_days / 30)
-    salary = base - deduction
-```
+## D9: Hybrid Salary LogicIF พนักงานใหม่ (เดือนแรก) OR ลาออก (เดือนสุดท้าย):
+USE Days Worked: salary = base × (worked_days / 30)ELSE (พนักงานเก่า):
+USE Days Absent:
+deduction = base × (absent_days / 30)
+salary = base - deduction
 
 ### Always /30 Fixed
 - ค่าแรงต่อวัน = salary / 30 (constant)
@@ -91,17 +131,11 @@ ELSE (พนักงานเก่า):
 
 ---
 
-## D10: SSO Formula
-
-```
-base = max(1,650, min(salary_actual, 15,000))
-sso  = round(base × 5%, 2)
-
-Cases:
+## D10: SSO Formulabase = max(1,650, min(salary_actual, 15,000))
+sso  = round(base × 5%, 2)Cases:
 ├── salary_actual ≤ 1,650 → SSO = 82.50 (floor)
 ├── 1,650 < salary_actual < 15,000 → SSO = salary_actual × 5%
 └── salary_actual ≥ 15,000 → SSO = 750.00 (cap)
-```
 
 ### Rounding
 - คณิตศาสตร์ (≥0.5 ขึ้น, <0.5 ลง)
@@ -121,8 +155,6 @@ Cases:
 7. ลาฌาปนกิจ (5 วัน)
 8. ลาทหาร (รับราชการ — ม.35, จ่ายไม่เกิน 60 วัน)
 9. ลาฝึกอบรม/อบรมวิชาชีพ (30 วัน/ปี — ม.34)
-
-> ลาประเภทพิเศษอื่น (ลาดูแลบิดา, ลาทำหมัน) → HR ใช้ ลากิจ/ลาฝึกอบรม + manual entry
 
 ---
 
@@ -180,7 +212,7 @@ Auto-deletion: Daily cron 02:00, soft delete + 30 วัน archive → hard del
 
 ---
 
-## D17: Pharmacist OT Fix 150 (⚠️ Risk Accepted)
+## D17: Pharmacist OT Fix 150 (✅ Legal Reviewed)
 
 **Decision**: Fix 150 บาท/ชม. ทั้ง 2 คน (ค๊อป + จอย)
 
@@ -209,3 +241,5 @@ Auto-deletion: Daily cron 02:00, soft delete + 30 วัน archive → hard del
 ---
 
 > 📌 **เพิ่ม decision ใหม่**: ใส่บนสุด, อัปเดต Index, ใส่ section reference
+
+*Last updated: 26 เม.ย. 2569 | D1 headcount corrected (32 in system / 29 payroll) | D17 Legal Reviewed*
