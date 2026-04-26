@@ -195,7 +195,7 @@ Auto-deletion: Daily cron 02:00, soft delete + 30 วัน archive → hard del
 - ประหยัด ~6,375 บาท/ปี
 - Worst case (ลูกจ้างฟ้องย้อนหลัง 2 ปี): ~14,000+ ค่าฟ้อง
 
-🚩 **Pending Legal Review** — ทนายตรวจ + อาจปรับปรุงภายหลัง
+✅ **Legal Reviewed 26 เม.ย. 2569** — Owner ยืนยัน risk accepted, Fix 150 บาท/ชม. คงเดิม
 
 ---
 
