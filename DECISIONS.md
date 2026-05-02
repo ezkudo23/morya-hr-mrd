@@ -26,6 +26,7 @@
 | D16 | 2026-04-25 | ลาป่วย ≥1 = ตัดเบี้ยขยัน | 🔒 Locked | 4, 6 |
 | D17 | 2026-04-26 | Pharmacist OT Fix 150 | ✅ Legal Reviewed | 4, 6, 7 |
 | D18 | 2026-04-25 | CC-HQ-WS Rotation | 🔒 Locked | 7 |
+| **D19** | **2026-05-02** | **Shift Management Scope** | **📝 Draft v2** | **13** |
 
 ---
 
@@ -240,6 +241,171 @@ Auto-deletion: Daily cron 02:00, soft delete + 30 วัน archive → hard del
 
 ---
 
-> 📌 **เพิ่ม decision ใหม่**: ใส่บนสุด, อัปเดต Index, ใส่ section reference
+## D19: Shift Management Scope (📝 Draft v2 — Pending Team Review)
 
-*Last updated: 26 เม.ย. 2569 | D1 headcount corrected (32 in system / 29 payroll) | D17 Legal Reviewed*
+**Date**: 2 พ.ค. 2569
+**Status**: 📝 Draft v2 — รอ review จากทีมก่อน lock
+**Source**: Pair-programming session กับ Owner (อมร) — 2 พ.ค. 2569
+**Replaces**: Humansoft shift management feature
+**Revisions**: v2 — V2 fix (alert ไม่ block) + Coverage Alert unified
+
+### Scope: 4 Workflows
+
+```
+1. Schedule Publishing       — Sup วางตารางทีม
+2. Shift Swap                — Staff สลับกะกัน
+3. Day-Off Swap              — Staff สลับวันหยุดกัน
+4. Shift Change Request      — Staff ขอเปลี่ยนกะคนเดียว
+
+❌ Coverage Substitution     — ใช้ Leave + OT workflow เดิม
+❌ Open Shift Pool           — Phase 2 หลัง Go-Live
+```
+
+### 28 Sub-Decisions
+
+#### A. Strategy & Architecture
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.1 | Phase Strategy | ทำทั้งก้อนรอบเดียว ไม่แบ่ง phase |
+| D19.2 | Workflow Count | 4 workflow |
+| D19.3 | SA Ext Layer | ไม่เพิ่ม Layer — SA Ext จัดการนอกระบบ swap |
+
+#### B. Schedule Management
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.4 | Schedule Period | Hybrid — รายเดือน publish + ปรับสัปดาห์ |
+| D19.5 | Schedule Source ม.ค. 2570 | Sup สร้างใน MYHR (parallel run ธ.ค. 2569) |
+| D19.6 | Publish Lead Time | ไม่มี hard — Soft warn ก่อนวันเริ่มเดือน |
+| D19.7 | Edit Window | แก้ได้ตลอด (ก่อนวันที่ผ่าน) — Re-publish + notify |
+| D19.8 | Visibility (Staff) | เห็นแค่ทีม CC ตัวเอง |
+| D19.9 | Validation Timing | Real-time warn + Block publish |
+
+#### C. Shift Swap Rules
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.10 | Swap Approval | B accept + Sup approve (2-step) |
+| D19.11 | Pharmacist Cross-CC Swap | Block |
+| D19.12 | Probation Swap | Allow — สิทธิ์เท่าพนักงานปกติ |
+| D19.13 | Cross-CC Swap (Staff ปกติ) | Allow — Sup ทั้ง 2 CC ต้อง approve |
+| D19.14 | Cross-Role Swap | Block — สลับเฉพาะ role เดียวกัน |
+| D19.15 | Sup ↔ Staff Swap | Escalate HR Admin / Owner |
+
+#### D. Change Request Rules
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.16 | Change Request Lead Time | Normal 1 วัน + Urgent same-day |
+
+#### E. Cancel & Rollback
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.17 | Cancel Swap (B agree path) | B agree → Sup approve → cancel |
+| D19.18 | Cancel Swap (B reject) | จบ — Swap คงเดิม (ไม่ไป Sup) |
+| D19.19 | Cancel Swap (B no response) | 24hr timeout → Sup decide |
+| D19.20 | Cancel Swap < 24hr ก่อนวัน | Block — ใช้ leave/correction |
+| D19.21 | After Check-in | Block — แนะนำใช้ Correction/Change Request |
+| D19.22 | Chain Swap (multiple swaps/วัน) | Limit 1 swap/วัน/คน |
+
+#### F. Edge Cases & Cascades
+
+| # | Decision | Choice |
+|---|---|---|
+| D19.23 | E20 — B sick after swap | Sup decide 3 options + escalation 1hr/2hr |
+| D19.24 | E21 — A resign after swap | Require ack + auto-cancel + Sup หาคนแทน |
+| D19.25 | E22 — Schedule edit overlap swap | Sup confirm dialog ก่อน cancel swap |
+| D19.26 | E38 — Both check-in (forgot swap) | Block 2nd check-in + alert Sup |
+
+#### G. Coverage & Validation (NEW in v2)
+
+| # | Decision | Choice |
+|---|---|---|
+| **D19.27** | **V1+V2 — Pharmacist/Sup Coverage** | **Alert (ไม่ block) — สิทธิ์ลาตามกฎหมาย** |
+| **D19.28** | **Coverage Alert** | **Unified (4 scenarios) — Owner+Delegates, ม่านตู้ยา procedure, Owner cover CC-01/04** |
+
+### Coverage Alert Rules (D19.28)
+
+```yaml
+recipient: Owner + Delegates (ไนซ์, จิว) เท่านั้น
+trigger_timing:
+  - timing_1: ตอน leave approve (early warning)
+  - timing_2: ตอน schedule publish (final reminder)
+
+scenarios:
+  A_pharmacist_only_absent:
+    severity: 🟡 Warning
+    cc_affected: CC-HQ-WS เท่านั้น (เพราะ CC-01/04 Sup=Pharmacist เดียวกัน)
+    operational_impact:
+      - ร้านเปิดได้ตามปกติ
+      - ปิดม่านตู้ยาอันตราย
+      - ไม่จ่ายยาที่ต้องใบสั่งแพทย์
+
+  B_sup_only_absent:
+    severity: 🟡 Warning
+    cc_affected: CC-HQ-WS เท่านั้น
+    cover_approval:
+      cc_hq_ws: Co-Sup (เมล์↔เดือน) automatic
+      cc_01: Owner cover (default)
+      cc_04: Owner cover (default)
+
+  C_dual_gap_critical:
+    severity: 🔴 Critical
+    cc_affected: CC-01 หรือ CC-04 (เมื่อ ค๊อป/จอย ลา)
+    options:
+      - ขอเลื่อนการลา
+      - หา pharmacist part-time + Owner cover Sup
+      - ปิดร้านวันนั้น
+      - ดึง Sup จาก CC อื่นมา cover
+
+  D_cohqws_co_sup:
+    severity: 🟢 Info
+    cc_affected: CC-HQ-WS
+    auto_resolved: Co-Sup คนอื่น cover ได้
+```
+
+### Special Rules
+
+#### Pharmacist Coverage Alert (V1)
+- Alert พิเศษเมื่อ ค๊อป (CC-01) หรือ จอย (CC-04) ขาด
+- แจ้ง Owner + Delegates เท่านั้น
+- ไม่ block — เพราะการลาเป็นสิทธิ์ตามกฎหมาย
+- Operational: ปิดม่านตู้ยาอันตราย, ไม่จ่ายยาที่ต้องใบสั่งแพทย์
+
+#### Validation Rules (V1-V11)
+- V1: Pharmacist coverage per CC → 🟡 Alert (ไม่ block)
+- V2: Supervisor coverage → 🟡 Alert (ไม่ block)
+- V3: D18 weekly off (≥1 วันหยุด/สัปดาห์) → 🚫 Block (ม.28)
+- V4: Rest period (≥12 ชม. ม.27) → 🚫 Block
+- V5: OT cap (≤36 ชม./สัปดาห์) → 🚫 Block
+- V6: Approved leave conflict → 🚫 Block
+- V7: Approved OT conflict → 🟡 Warn
+- V8: Sale Admin Ext (separate) → —
+- V9: Cross-month boundary → 🚫 Block
+- V10: Resignation date → 🚫 Block
+- V11: Skill/Role compatibility → 🚫 Block (เฉพาะ swap)
+
+### Notification Strategy
+
+```
+1 swap = ~10-18 noti
+5-10 swap/เดือน × 15 = 75-150 noti/เดือน
++ Coverage Alerts: ~10-20/เดือน
++ Schedule Re-publish: ~5-10/เดือน
+─────────────
+total Section 13: ~90-180 noti/เดือน
+total noti (Section 8 + 13): ~740-980/เดือน
+buffer remaining: ~93% ✅ ปลอดภัย
+```
+
+### Sprint Plan: 12 วัน
+
+ดู Section 13.13 สำหรับ breakdown รายวัน
+
+---
+
+> 📌 **เพิ่ม decision ใหม่**: ใส่ต่อท้าย, อัปเดต Index, ใส่ section reference
+
+*Last updated: 2 พ.ค. 2569 | D1 headcount corrected (32 in system / 29 payroll) | D17 Legal Reviewed | D19 Shift Management v2 — pending team review*
